@@ -7,14 +7,14 @@ export default function Product() {
 	return (
 		<div className={style.product}>
 
-			<Link to="">
+			<Link to="/products/1">
 				<div className={style.productImg}>
 					<img src={img1} />
 				</div>
 			</Link>
 			<div className={style.productInfo}>
 				<div className={style.productInfoRow}>
-					<Link to="">
+					<Link to="/products/1">
 						<span><strong>Apple AirPods Pro 2nd gen</strong></span>
 					</Link>
 				</div>
