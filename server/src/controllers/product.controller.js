@@ -27,4 +27,37 @@ export default class ProductController {
 			next(error)
 		}
 	}
+
+	static async getProducts(req, res, next) {
+		try {
+			const products = await ProductGateway.findAll();
+
+			res.status(200).json({
+				ok: true,
+				message: "Retrived products successfully",
+				data: {
+					products: products
+				}
+			});
+		} catch (error) {
+			next(error)
+		}
+	}
+
+	static async getProduct(req, res, next) {
+		try {
+			const { id } = req.params;
+			const product = await ProductGateway.findById(id);
+
+			res.status(200).json({
+				ok: true,
+				message: "Retrived products successfully",
+				data: {
+					product: product
+				}
+			});
+		} catch (error) {
+			next(error)
+		}
+	}
 }
