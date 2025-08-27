@@ -1,11 +1,13 @@
-import { ToastProvider, useToast } from './context/ToastProvider'
+import Header from "./components/Header";
+import { ToastProvider, useToast } from "./context/ToastProvider"
 import Toast from "./components/Toast";
 
-import "./App.css";
+// import "./App.css";
 
 function App() {
 	return (
 		<ToastProvider>
+			<Header />
 			<Toast />
 			<ShowToast />
 		</ToastProvider>

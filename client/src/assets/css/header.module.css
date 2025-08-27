@@ -1,0 +1,35 @@
+.header {
+	border-bottom: 2px solid hsla(var(--surface-container));
+}
+
+.nav {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+}
+
+.menu {
+	list-style: none;
+	display: flex;
+	gap: 8px;
+
+	font-size: var(--fs-50);
+}
+
+.menu li a {
+	display: block;
+	padding: 16px;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 735px) {
+	.nav {
+		justify-content: end;
+	}
+	.menu {
+		display: none;
+	}
+}
+

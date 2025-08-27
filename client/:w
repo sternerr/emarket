@@ -1,0 +1,84 @@
+.header {
+	border-bottom: 2px solid hsla(var(--surface-container));
+}
+
+.nav {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	font-size: var(--fs-50);
+}
+
+.menu {
+	list-style: none;
+	display: flex;
+	gap: 8px;
+}
+
+.menu li a {
+	display: block;
+	padding: 16px;
+	cursor: pointer;
+}
+
+.dropdownPortal {
+	position: absolute;
+	top: 100%; right: 0;
+	max-width: 350px;
+	width: 100%;
+	box-shadow: var(--shadow-elevation-high);
+	border-radius: 10px;
+}
+
+.dropdownMenu {
+	list-style: none;
+	font-size: var(--fs-50);
+}
+
+.dropdownMenu div {
+	display: none;
+}
+
+.dropdownTrigger {
+	padding: 16px;
+	cursor: pointer;
+}
+
+.dropdownMenu li {
+	padding: 4px;
+	border-bottom: 1px solid hsla(var(--surface-container));
+}
+
+.dropdownMenu li:hover {
+	background-color: hsla(var(--surface-container));
+	transition: background-color 300ms;
+}
+
+.dropdownMenu div li:last-of-type  {
+	border-bottom: 1px solid hsla(var(--surface-container));
+}
+
+.dropdownMenu li:last-of-type {
+	border: none;
+}
+
+.dropdownMenu a {
+	display: block;
+	padding: 12px;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 735px) {
+	.nav {
+		justify-content: end;
+	}
+	.menu {
+		display: none;
+	}
+
+	.dropdownMenu div {
+		display: block;
+	}
+}
