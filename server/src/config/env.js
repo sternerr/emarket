@@ -12,3 +12,6 @@ function getEnv(key, required = true) {
 }
 
 export const PORT = parseInt(getEnv("PORT", false));
+export const DB_URI = getEnv("DB_URI", false);
+
+console.log(process.env.DB_URI);

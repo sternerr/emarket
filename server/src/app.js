@@ -1,5 +1,7 @@
 import express from "express";
 
+import productRouter from "./routes/product.route.js";
+
 class App {
 	#express
 
@@ -15,6 +17,7 @@ class App {
 	}
 
 	routes() {
+		this.#express.use("/api/v1/products", productRouter);
 		this.#express.get("/", (_, res) => {
 			res.json({ message: "Welcome to e-market backend" });
 		});
