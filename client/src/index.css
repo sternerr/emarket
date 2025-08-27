@@ -2,10 +2,12 @@
 
 :root {
 	/* Color */
+	--surface: 0, 0%, 100%, 1;
 	--surface-container: 0, 0%, 90%, 1;
 
 	/* font size */
 	--fs-50: 18px;
+	--fs-40: 16px;
 
 	/* shadow */
 	--shadow-color: 0deg 0% 63%;
@@ -32,9 +34,27 @@
 		96px 100px 155.9px -2.5px hsl(var(--shadow-color) / 0.27);
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.section__title {
+	font-size: var(--fs-50);
+	padding-block: 32px;
+}
+
 .block {
 	max-width: 1420px;
 	width: 100%;
 	margin: 0 auto;
 	padding-inline: 32px;
+}
+
+.product__grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+	width: 100%;
+	overflow: hidden;
 }

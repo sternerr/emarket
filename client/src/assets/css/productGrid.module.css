@@ -1,0 +1,30 @@
+.grid {
+	display: grid;
+	grid-template-columns: repeat(var(--grid-columns), minmax(200px, 1fr));
+	gap: 16px;
+}
+
+.scrollable {
+	overflow-x: auto;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+@media (max-width: 1024px) {
+	.grid:not(.scrollable) {
+		grid-template-columns: repeat(3, minmax(180px, 1fr));
+	}
+}
+
+@media (max-width: 735px) {
+	.grid:not(.scrollable) {
+		grid-template-columns: repeat(2, minmax(180px, 1fr));
+	}
+}
+
+@media (max-width: 735px) {
+	.grid:not(.scrollable) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}

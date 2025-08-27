@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import style from "../assets/css/header.module.css";
 import Dropdown from "./Dropdown";
 
@@ -7,10 +8,10 @@ export default function Header() {
 		<header className={style.header}>
 			<nav className={[style.nav, "block"].join(" ")}>
 				<ul className={style.menu}>
-					<li><a>Home</a></li>
-					<li><a>Shop</a></li>
-					<li><a>About</a></li>
-					<li><a>Contact</a></li>
+					<li><Link to="/">Home</Link></li>
+					<li><Link to="/shop">Shop</Link></li>
+					<li><Link to="/about">About</Link></li>
+					<li><Link to="/contact">Contact</Link></li>
 				</ul>
 				<Dropdown />
 			</nav>

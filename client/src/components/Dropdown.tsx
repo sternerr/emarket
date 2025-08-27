@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import style from "../assets/css/dropdown.module.css";
+import { Link } from "react-router";
 
 export default function Dropdown() {
 	const [open, setOpen] = useState<boolean>(false);
@@ -13,13 +14,13 @@ export default function Dropdown() {
 			<div className={style.dropdownPortal}>
 				<ul className={style.dropdownMenu}>
 					<div>
-						<li><a>Home</a></li>
-						<li><a>Shop</a></li>
-						<li><a>About</a></li>
-						<li><a>Contact</a></li>
+						<li><Link to="/">Home</Link></li>
+						<li><Link to="/shop">Shop</Link></li>
+						<li><Link to="/about">About</Link></li>
+						<li><Link to="/contact">Contact</Link></li>
 					</div>
-					<li><a>Cart</a></li>
-					<li><a>My Orders</a></li>
+					<li><Link to="/cart">Cart</Link></li>
+					<li><Link to="my-orders">My Orders</Link></li>
 					<li><a>Sign out</a></li>
 				</ul>
 			</div>

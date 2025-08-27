@@ -1,0 +1,29 @@
+.product {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	font-size: var(--fs-40);
+}
+
+
+.productImg {
+	background-color: hsla(var(--surface-container));
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.productImg img {
+	width: 100%;
+}
+
+.productInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.productInfoRow {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+}
