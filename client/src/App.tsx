@@ -5,18 +5,22 @@ import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
 import { CartProvider } from "./context/CartProvider";
+import CartPage from "./pages/CartPage";
+import Toast from "./components/Toast";
 
 // import "./App.css";
 
 function App() {
 	return (
 		<ToastProvider>
+			<Toast />
 			<CartProvider>
 				<BrowserRouter>
 					<Routes>
 						<Route path="/" element={<HomePage />} />
 						<Route path="/products" element={<ShopPage />} />
 						<Route path="/products/:id" element={<ProductPage />} />
+						<Route path="/cart" element={<CartPage />} />
 					</Routes>
 				</BrowserRouter>
 			</CartProvider>

@@ -1,0 +1,72 @@
+.cartWrapper {
+	display: flex;
+	gap: 64px;
+	padding-block: 32px;
+}
+
+.itemCol {
+	flex: 2;
+	width: 100%;
+}
+
+.orderSumCol {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 16px;
+	padding: 16px;
+	height: 100%;
+	background-color: hsla(var(--surface-container));
+	border-radius: 10px;
+}
+
+.price {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	background-color: hsla(var(--surface-container));
+
+	font-size: var(--fs-50);
+}
+
+.table {
+	max-width: 700px;
+	width: 100%;
+}
+
+.tableHead {
+	border-bottom: 1px solid hsla(var(--surface-container));
+}
+
+.tableRow {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	padding: 16px;
+}
+
+.tableCol {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+
+@media screen and (max-width: 735px) {
+	.cartWrapper {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.itemCol {
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+
+	.table {
+		min-width: 450px;
+	}
+}
