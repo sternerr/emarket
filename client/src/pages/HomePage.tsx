@@ -1,36 +1,35 @@
+import { useEffect, useState } from "react";
 import Header from "../components/Header"
 import ProductCard from "../components/Product"
 import ProductGrid from "../components/ProductGrid"
 import type { Product } from "../context/CartProvider";
 
-const products: Product[] = [
-	{
-		id: '1',
-		title: 'Sample T-Shirt',
-		price: 19.99,
-		quantity: 10,
-	},
-	{
-		id: '2',
-		title: 'Sample Hoodie',
-		price: 39.99,
-		quantity: 10,
-	},
-	{
-		id: '3',
-		title: 'Sample Cap',
-		price: 14.99,
-		quantity: 10,
-	},
-	{
-		id: '4',
-		title: 'Sample Sneakers',
-		price: 79.99,
-		quantity: 10,
-	},
-];
-
 export default function HomePage() {
+	const [products, setProducts] = useState<Product[]>([]);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		const fetchProducts = async () => {
+			try {
+				const response = await fetch(`http://${import.meta.env.VITE_API_URI}/api/v1/products`);
+				console.log("a");
+				if (!response.ok) {
+					throw new Error(`Failed to fetch products: ${response.statusText}`);
+				}
+
+				const data = await response.json();
+				console.log(data);
+				setProducts(data.data.products);
+			} catch (error) {
+				console.error('Fetch error:', error);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchProducts();
+	}, [])
+
 	return <>
 		<Header />
 		<main>
@@ -38,11 +37,17 @@ export default function HomePage() {
 				<div className="section__title">
 					<h3>Popular Products</h3>
 				</div>
-				<ProductGrid scrollable={true} length={4}>
-					{products.map((product) => (
-						<ProductCard key={product.id} product={product} />
-					))}
-				</ProductGrid>
+				{loading ? (
+					<div>loading...</div>
+				) : (
+					<ProductGrid scrollable={true} length={4}>
+						{products.map((product, index) => {
+							if (index < 4) {
+								return <ProductCard key={product.id} product={product} />
+							}
+						})}
+					</ProductGrid>
+				)}
 			</section>
 		</main >
 	</>

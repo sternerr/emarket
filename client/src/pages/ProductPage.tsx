@@ -7,66 +7,59 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-const products: Product[] = [
-	{
-		id: '1',
-		title: 'Sample T-Shirt',
-		price: 19.99,
-		quantity: 10,
-	},
-	{
-		id: '2',
-		title: 'Sample Hoodie',
-		price: 39.99,
-		quantity: 10,
-	},
-	{
-		id: '3',
-		title: 'Sample Cap',
-		price: 14.99,
-		quantity: 10,
-	},
-	{
-		id: '4',
-		title: 'Sample Sneakers',
-		price: 79.99,
-		quantity: 10,
-	},
-];
-
 export default function ProductPage() {
 	const { id } = useParams();
 	const [product, setProduct] = useState<Product | undefined>(undefined);
+	const [loading, setLoading] = useState(true);
+
 	const { addToCart } = useCart();
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		const p = products.find(p => p.id === id);
-		setProduct(p);
+		const fetchProducts = async () => {
+			try {
+				const response = await fetch(`http://${import.meta.env.VITE_API_URI}/api/v1/products/${id}`);
+				if (!response.ok) {
+					throw new Error(`Failed to fetch products: ${response.statusText}`);
+				}
+
+				const data = await response.json();
+				console.log(data);
+				setProduct(data.data.product)
+			} catch (error) {
+				console.error('Fetch error:', error);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchProducts();
 	}, [])
 
 	return <>
 		<Header />
 		<main>
 			<section className="block">
-				<div className={style.product}>
-					<div className={style.productImg}>
-						<img src={img1} />
+				{loading ? (<div>loading...</div>) : (
+					<div className={style.product}>
+						<div className={style.productImg}>
+							<img src={img1} />
+						</div>
+						<div className={style.productInfo}>
+							<div>
+								<h1>{product?.title}</h1>
+								<p>{product?.description}</p>
+							</div>
+							<div>
+								<span><strong>${product?.price}</strong></span>
+							</div>
+							<div>
+								<button onClick={() => addToCart(product!)}>Add to cart</button>
+								<button onClick={() => { addToCart(product!); navigate("/cart"); }}>Buy</button>
+							</div>
+						</div>
 					</div>
-					<div className={style.productInfo}>
-						<div>
-							<h1>{product?.title}</h1>
-							<p>Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C) provide excellent sound, active noise cancellation, and a comfortable fit. The USB-C case ensures quick charging, and they pair seamlessly with Apple devices for an effortless audio experience.</p>
-						</div>
-						<div>
-							<span><strong>${product?.price}</strong></span>
-						</div>
-						<div>
-							<button onClick={() => addToCart(product!)}>Add to cart</button>
-							<button onClick={() => { addToCart(product!); navigate("/cart"); }}>Buy</button>
-						</div>
-					</div>
-				</div>
+				)}
 			</section>
 		</main >
 	</>

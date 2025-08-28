@@ -1,8 +1,9 @@
-import { createContext, ReactNode, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 export type Product = {
 	id: string;
 	title: string;
+	description: string;
 	price: number;
 	quantity: number;
 	img?: string;
