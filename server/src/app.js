@@ -1,5 +1,10 @@
 import express from "express";
 import cors from "cors";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 import productRouter from "./routes/product.route.js";
 import authRouter from "./routes/auth.route.js";
@@ -14,6 +19,7 @@ class App {
 	}
 
 	middlewares() {
+		this.#express.use('/uploads', express.static(__dirname + "/public/uploads"));
 		this.#express.use(cors({
 			origin: "*",
 		}));
@@ -24,6 +30,7 @@ class App {
 	routes() {
 		this.#express.use("/api/v1/products", productRouter);
 		this.#express.use("/api/v1/auth", authRouter);
+
 		this.#express.get("/", (_, res) => {
 			res.json({ message: "Welcome to e-market backend" });
 		});

@@ -37,7 +37,7 @@ export default function CartPage() {
 							</div>
 							<div className={style.tableBody}>
 								{cart.map((item: Product) => (
-									<div className={style.tableRow}>
+									<div key={item.id} className={style.tableRow}>
 										<div className={style.tableCol}>
 											<span>{item.title}</span>
 											<button onClick={() => removeFromCart(item.id)}>remove</button>

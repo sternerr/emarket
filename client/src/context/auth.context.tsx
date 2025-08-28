@@ -1,4 +1,5 @@
 import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 export type User = {
 	id: string;
@@ -22,7 +23,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 		if (user) {
 			localStorage.setItem("user", JSON.stringify(user))
 		} else {
-			localStorage.removeItem("user")
+			localStorage.removeItem("user");
 		}
 	}, [user]);
 

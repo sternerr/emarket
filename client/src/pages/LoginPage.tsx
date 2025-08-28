@@ -48,11 +48,6 @@ export default function LoginPage() {
 			}
 
 			const data = await response.json()
-			if (!data.ok) {
-				const error = new Error();
-				error.message = data.message;
-				throw error;
-			}
 
 			const user: User = {
 				token: data.data.token,

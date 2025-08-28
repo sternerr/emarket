@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
 
 export type Product = {
 	id: string;
@@ -6,7 +6,7 @@ export type Product = {
 	description: string;
 	price: number;
 	quantity: number;
-	img?: string;
+	filename: string;
 }
 
 type CartContextType = {

@@ -1,4 +1,3 @@
-import img1 from "../assets/img/apple_earphone_image.png";
 import style from "../assets/css/product.module.css";
 import { Link, useNavigate } from "react-router";
 
@@ -26,7 +25,7 @@ export default function ProductCard({ product }: { product: Product }) {
 		<div className={style.product}>
 			<Link to={"/products/" + product.id}>
 				<div className={style.productImg}>
-					<img src={img1} />
+					<img src={`http://${import.meta.env.VITE_API_URI}/uploads/${product.filename}`} />
 				</div>
 			</Link>
 			<div className={style.productInfo}>

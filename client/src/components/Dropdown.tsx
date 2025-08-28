@@ -1,12 +1,18 @@
 import { useState } from "react";
 
 import style from "../assets/css/dropdown.module.css";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../context/auth.context";
 
 export default function Dropdown() {
 	const { user, logout } = useAuth();
 	const [open, setOpen] = useState<boolean>(false);
+	const navigate = useNavigate();
+
+	const handleLogout = () => {
+		logout()
+		navigate("/");
+	}
 
 	return <>
 		<div className={style.dropdownTrigger}>
@@ -25,8 +31,8 @@ export default function Dropdown() {
 						{/* <li><Link to="/contact">Contact</Link></li> */}
 					</div>
 					<li><Link to="/cart">Cart</Link></li>
-					<li><Link to="my-orders">My Orders</Link></li>
-					<li><a onClick={() => logout()}>Sign out</a></li>
+					{/* <li><Link to="my-orders">My Orders</Link></li> */}
+					<li><a onClick={handleLogout}>Sign out</a></li>
 				</ul>
 			</div>
 		)}
