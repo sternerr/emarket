@@ -12,6 +12,6 @@ function getEnv(key, required = true) {
 }
 
 export const PORT = parseInt(getEnv("PORT", false));
-export const DB_URI = getEnv("DB_URI", false);
-
-console.log(process.env.DB_URI);
+export const DB_URI = getEnv("DB_URI", true);
+export const JWT_SECRET = getEnv("JWT_SECRET", true);
+export const JWT_EXPIRES_IN = getEnv("JWT_EXPIRES_IN", true)
