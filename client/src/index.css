@@ -45,11 +45,26 @@ a {
 	padding-block: 32px;
 }
 
+.fullscreen {
+	min-height: 100vh;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .block {
 	max-width: 1420px;
 	width: 100%;
 	margin: 0 auto;
 	padding-inline: 32px;
+}
+
+.block--form {
+	max-width: 300px;
+	width: 100%;
 }
 
 .product__grid {

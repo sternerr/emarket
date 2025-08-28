@@ -6,13 +6,17 @@ import style from "../assets/css/productPage.module.css";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { useToast } from "../context/ToastProvider";
+import { useAuth } from "../context/auth.context";
 
 export default function ProductPage() {
 	const { id } = useParams();
 	const [product, setProduct] = useState<Product | undefined>(undefined);
 	const [loading, setLoading] = useState(true);
 
+	const { user } = useAuth();
 	const { addToCart } = useCart();
+	const { showToast } = useToast();
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -24,7 +28,6 @@ export default function ProductPage() {
 				}
 
 				const data = await response.json();
-				console.log(data);
 				setProduct(data.data.product)
 			} catch (error) {
 				console.error('Fetch error:', error);
@@ -36,6 +39,28 @@ export default function ProductPage() {
 		fetchProducts();
 	}, [])
 
+	const handleBuy = () => {
+		if (!user) {
+			showToast("You have to be logged in", "info");
+			return
+		}
+
+		if (product) {
+			addToCart(product);
+			navigate("/cart");
+		}
+	}
+
+	const handleAddToCart = () => {
+		if (!user) {
+			showToast("You have to be logged in", "info");
+			return
+		}
+
+		if (product) {
+			addToCart(product);
+		}
+	}
 	return <>
 		<Header />
 		<main>
@@ -54,8 +79,8 @@ export default function ProductPage() {
 								<span><strong>${product?.price}</strong></span>
 							</div>
 							<div>
-								<button onClick={() => addToCart(product!)}>Add to cart</button>
-								<button onClick={() => { addToCart(product!); navigate("/cart"); }}>Buy</button>
+								<button onClick={handleAddToCart}>Add to cart</button>
+								<button onClick={handleBuy}>Buy</button>
 							</div>
 						</div>
 					</div>

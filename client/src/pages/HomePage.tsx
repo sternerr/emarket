@@ -12,13 +12,11 @@ export default function HomePage() {
 		const fetchProducts = async () => {
 			try {
 				const response = await fetch(`http://${import.meta.env.VITE_API_URI}/api/v1/products`);
-				console.log("a");
 				if (!response.ok) {
 					throw new Error(`Failed to fetch products: ${response.statusText}`);
 				}
 
 				const data = await response.json();
-				console.log(data);
 				setProducts(data.data.products);
 			} catch (error) {
 				console.error('Fetch error:', error);

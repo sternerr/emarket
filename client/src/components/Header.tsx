@@ -10,8 +10,8 @@ export default function Header() {
 				<ul className={style.menu}>
 					<li><Link to="/">Home</Link></li>
 					<li><Link to="/products">Shop</Link></li>
-					<li><Link to="/about">About</Link></li>
-					<li><Link to="/contact">Contact</Link></li>
+					{/* <li><Link to="/about">About</Link></li> */}
+					{/* <li><Link to="/contact">Contact</Link></li> */}
 				</ul>
 				<Dropdown />
 			</nav>

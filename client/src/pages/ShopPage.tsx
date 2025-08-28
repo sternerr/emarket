@@ -19,7 +19,6 @@ export default function ShopPage() {
 				}
 
 				const data = await response.json();
-				console.log(data);
 				setProducts(data.data.products);
 			} catch (error) {
 				console.error('Fetch error:', error);
