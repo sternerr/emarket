@@ -1,0 +1,20 @@
+services:
+  client:
+    container_name: "emarket-client"
+    build:
+      context: "./client/"
+      dockerfile: "Dockerfile"
+      target: "dev"
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  server:
+    container_name: "emarket-server"
+    build:
+      context: "./server/"
+      dockerfile: "Dockerfile"
+      target: "dev"
+    ports:
+      - "3001:3001"
+    restart: unless-stopped

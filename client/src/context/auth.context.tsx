@@ -1,5 +1,4 @@
 import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 
 export type User = {
 	id: string;

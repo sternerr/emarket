@@ -1,7 +1,5 @@
 import Header from "../components/Header"
 
-import img1 from "../assets/img/apple_earphone_image.png";
-
 import style from "../assets/css/cartPage.module.css";
 
 import { useToast } from "../context/ToastProvider";

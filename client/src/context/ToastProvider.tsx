@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useCallback, useContext, useState } from "react";
+import { createContext, type ReactNode, useCallback, useContext, useState } from "react";
 
 type Toast = {
 	id: string;

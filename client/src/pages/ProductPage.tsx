@@ -70,7 +70,7 @@ export default function ProductPage() {
 				{loading ? (<div>loading...</div>) : (
 					<div className={style.product}>
 						<div className={style.productImg}>
-							<img src={`http://${import.meta.env.VITE_API_URI}/uploads/${product.filename}`} />
+							<img src={`http://${import.meta.env.VITE_API_URI}/uploads/${product?.filename}`} />
 						</div>
 						<div className={style.productInfo}>
 							<div>
