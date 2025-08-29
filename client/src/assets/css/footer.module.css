@@ -1,0 +1,27 @@
+.footer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+
+	gap: 128px;
+
+	padding-block: 64px;
+}
+
+.footer div {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+
+	font-size: var(--fs-50);
+}
+
+.footer ul {
+	list-style: none;
+}
+
+.footer ul li {
+	padding: 4px;
+}
+.footer ul li a {
+	padding: 8px;
+}

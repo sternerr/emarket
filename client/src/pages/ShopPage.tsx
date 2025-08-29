@@ -4,6 +4,7 @@ import ProductCard from "../components/Product"
 import ProductGrid from "../components/ProductGrid"
 
 import type { Product } from "../context/CartProvider";
+import Footer from "../components/Footer";
 
 export default function ShopPage() {
 	const [products, setProducts] = useState<Product[]>([]);
@@ -48,5 +49,6 @@ export default function ShopPage() {
 				)}
 			</section>
 		</main >
+		<Footer />
 	</>
 }

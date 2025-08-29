@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useToast } from "../context/ToastProvider";
 import { useAuth } from "../context/auth.context";
+import Footer from "../components/Footer";
 
 export default function ProductPage() {
 	const { id } = useParams();
@@ -98,5 +99,6 @@ export default function ProductPage() {
 				)}
 			</section>
 		</main >
+		<Footer />
 	</>
 }

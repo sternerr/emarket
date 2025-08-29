@@ -7,7 +7,7 @@
 }
 
 .primary.filled {
-	background-color: hsla(33, 80.9%, 63.2%, 1);
+	background-color: hsla(var(--primary), 1);
 	color: hsla(var(--surface));
 	border-radius: 5px;
 }

@@ -14,7 +14,6 @@
 	list-style: none;
 	display: flex;
 	gap: 8px;
-
 	font-size: var(--fs-50);
 }
 

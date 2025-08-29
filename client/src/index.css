@@ -6,9 +6,11 @@
 	--surface-container: 0, 0%, 90%, 1;
 
 	--surface-on: 0, 0%, 0%, 1;
+	
+	--primary: 21, 21%, 65%;
 
 	/* font size */
-	--fs-60: 32px;
+	--fs-60: 24px;
 	--fs-50: 18px;
 	--fs-40: 16px;
 
@@ -43,8 +45,14 @@ a {
 }
 
 .section__title {
-	font-size: var(--fs-50);
-	padding-block: 32px;
+	font-size: var(--fs-60);
+	padding-block: 64px;
+}
+
+.section__button {
+	width: fit-content;
+	margin: 0 auto;
+	padding: 64px;
 }
 
 .fullscreen {

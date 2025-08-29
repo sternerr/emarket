@@ -4,6 +4,7 @@ import style from "../assets/css/cartPage.module.css";
 
 import { useToast } from "../context/ToastProvider";
 import { useCart, type Product } from "../context/CartProvider";
+import Footer from "../components/Footer";
 
 export default function CartPage() {
 	const { showToast } = useToast();

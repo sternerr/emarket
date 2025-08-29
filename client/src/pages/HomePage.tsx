@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header"
+import Footer from "../components/Footer"
 import ProductCard from "../components/Product"
 import ProductGrid from "../components/ProductGrid"
+import Hero from "../components/Hero";
+import Button from "../components/basic/Button";
+import { Link } from "react-router-dom";
+
 import type { Product } from "../context/CartProvider";
 
 export default function HomePage() {
@@ -31,6 +36,7 @@ export default function HomePage() {
 	return <>
 		<Header />
 		<main>
+			<Hero />
 			<section className="block">
 				<div className="section__title">
 					<h3>Popular Products</h3>
@@ -46,7 +52,11 @@ export default function HomePage() {
 						})}
 					</ProductGrid>
 				)}
+				<div className="section__button">
+					<Link to="/products"><Button variant="primary" design="filled">See more products</Button></Link>
+				</div>
 			</section>
 		</main >
+		<Footer />
 	</>
 }
