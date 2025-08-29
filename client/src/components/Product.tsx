@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router";
 import { useCart, type Product } from "../context/CartProvider";
 import { useAuth } from "../context/auth.context";
 import { useToast } from "../context/ToastProvider";
+import Button from "./basic/Button";
 
 export default function ProductCard({ product }: { product: Product }) {
 	const { user } = useAuth();
@@ -36,7 +37,7 @@ export default function ProductCard({ product }: { product: Product }) {
 				</div>
 				<div className={style.productInfoRow}>
 					<span>${product.price}</span>
-					<button onClick={handleBuy}>Buy now</button>
+					<Button design="outlined" variant="secondary" onClick={handleBuy}>Buy now</Button>
 				</div>
 			</div>
 		</div >

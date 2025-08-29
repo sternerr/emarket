@@ -1,0 +1,7 @@
+.input {
+	border: 2px solid hsla(var(--surface-container));
+	padding: 8px;
+	font-size: var(--fs-40);
+	cursor: pointer;
+	width: 100%;
+}

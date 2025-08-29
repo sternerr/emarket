@@ -5,6 +5,8 @@
 	--surface: 0, 0%, 100%, 1;
 	--surface-container: 0, 0%, 90%, 1;
 
+	--surface-on: 0, 0%, 0%, 1;
+
 	/* font size */
 	--fs-60: 32px;
 	--fs-50: 18px;

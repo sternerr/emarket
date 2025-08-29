@@ -3,6 +3,8 @@ import { useAuth, type User } from "../context/auth.context";
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import Form from "../components/Form";
+import Button from "../components/basic/Button";
+import Input from "../components/basic/Input";
 import { useToast } from "../context/ToastProvider";
 
 export default function SignUpPage() {
@@ -67,11 +69,11 @@ export default function SignUpPage() {
 	return (
 		<main className="fullscreen center">
 			<Form onSubmit={handleSubmit}>
-				<input type="email" placeholder="Email" name="email" />
-				<input type="password" placeholder="Password" name="password" />
-				<input type="password" placeholder="Reenter password" name="repassword" />
-				<button type="submit">Sign up</button>
-				<span>Have an account? <Link to="/sign-in">sign-in</Link></span>
+				<Input type="email" placeholder="Email" name="email" />
+				<Input type="password" placeholder="Password" name="password" />
+				<Input type="password" placeholder="Reenter password" name="repassword" />
+				<Button type="submit">Sign up</Button>
+				<span>Have an account? <u><Link to="/sign-in">sign-in</Link></u></span>
 			</Form>
 		</main >
 	);

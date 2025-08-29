@@ -1,0 +1,25 @@
+.button {
+	border: none;
+	padding: 8px;
+	font-size: var(--fs-40);
+	cursor: pointer;
+	width: 100%;
+}
+
+.primary.filled {
+	background-color: hsla(33, 80.9%, 63.2%, 1);
+	color: hsla(var(--surface));
+	border-radius: 5px;
+}
+
+.secondary.outlined {
+	background: none;
+	border: 1px solid hsla(var(--surface-on));
+	border-radius: 5px;
+}
+
+
+.secondary.outlined:hover {
+	background: hsla(var(--surface-container));
+	transition: background 300ms;
+}

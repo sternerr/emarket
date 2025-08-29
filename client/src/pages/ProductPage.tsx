@@ -1,7 +1,8 @@
-import Header from "../components/Header"
+import Header from "../components/Header";
+import Button from "../components/basic/Button";
+
 import { useCart, type Product } from "../context/CartProvider";
 
-import img1 from "../assets/img/apple_earphone_image.png";
 import style from "../assets/css/productPage.module.css";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
@@ -61,6 +62,7 @@ export default function ProductPage() {
 			addToCart(product);
 		}
 	}
+
 	return <>
 		<Header />
 		<main>
@@ -79,8 +81,17 @@ export default function ProductPage() {
 								<span><strong>${product?.price}</strong></span>
 							</div>
 							<div>
-								<button onClick={handleAddToCart}>Add to cart</button>
-								<button onClick={handleBuy}>Buy</button>
+								<Button
+									variant="secondary"
+									design="outlined"
+									onClick={handleAddToCart}
+								>Add to cart</Button>
+
+								<Button
+									variant="primary"
+									design="filled"
+									onClick={handleBuy}
+								>Buy</Button>
 							</div>
 						</div>
 					</div>
