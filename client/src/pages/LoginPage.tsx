@@ -6,7 +6,6 @@ import Form from "../components/Form";
 import Button from "../components/basic/Button";
 import Input from "../components/basic/Input";
 import { useToast } from "../context/ToastProvider";
-import Footer from "../components/Footer";
 
 export default function LoginPage() {
 	const { user, setUser } = useAuth();
