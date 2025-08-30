@@ -4,6 +4,7 @@ import style from "../assets/css/cartPage.module.css";
 
 import { useToast } from "../context/ToastProvider";
 import { useCart, type Product } from "../context/CartProvider";
+import Button from "../components/basic/Button";
 
 export default function CartPage() {
 	const { showToast } = useToast();
@@ -38,7 +39,11 @@ export default function CartPage() {
 									<div key={item.id} className={style.tableRow}>
 										<div className={style.tableCol}>
 											<span>{item.title}</span>
-											<button onClick={() => removeFromCart(item.id)}>remove</button>
+											<button
+												variant="secondary"
+												design="outlined"
+												onClick={() => removeFromCart(item.id)}
+											>remove</button>
 										</div>
 										<div className={style.tableCol}>
 											<span>{item.price}</span>
@@ -59,11 +64,14 @@ export default function CartPage() {
 							<span><strong>Total</strong></span>
 							<span><strong>${getCartTotal().toFixed(2)}</strong></span>
 						</div>
-						<button onClick={() => showToast(
-							"Order functionality not implemented yet",
-							"info",
-							2000
-						)}>Place order</button>
+						<Button
+							variant="secondary"
+							design="outlined"
+							onClick={() => showToast(
+								"Order functionality not implemented yet",
+								"info",
+								2000
+							)}>Place order</Button>
 					</div>
 				</div>
 			</section>
