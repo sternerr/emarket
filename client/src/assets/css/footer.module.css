@@ -25,3 +25,14 @@
 .footer ul li a {
 	padding: 8px;
 }
+
+@media screen and (max-width: 800px) {
+	.footer {
+		grid-template-columns: repeat(1, 1fr);
+		gap: 64px;
+	}
+
+	.footer div {
+		gap: 16px;
+	}
+}
