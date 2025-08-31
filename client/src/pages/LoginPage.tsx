@@ -33,7 +33,7 @@ export default function LoginPage() {
 				throw error;
 			}
 
-			const response = await fetch(`http://${import.meta.env.VITE_API_URI}/api/v1/auth/sign-in`, {
+			const response = await fetch(`${import.meta.env.VITE_API_URI}/api/v1/auth/sign-in`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

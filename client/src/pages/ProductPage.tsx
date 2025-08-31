@@ -24,7 +24,7 @@ export default function ProductPage() {
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {
-				const response = await fetch(`http://${import.meta.env.VITE_API_URI}/api/v1/products/${id}`);
+				const response = await fetch(`${import.meta.env.VITE_API_URI}/api/v1/products/${id}`);
 				if (!response.ok) {
 					throw new Error(`Failed to fetch products: ${response.statusText}`);
 				}
@@ -71,7 +71,7 @@ export default function ProductPage() {
 				{loading ? (<div>loading...</div>) : (
 					<div className={style.product}>
 						<div className={style.productImg}>
-							<img src={`http://${import.meta.env.VITE_API_URI}/uploads/${product?.filename}`} />
+							<img src={`${import.meta.env.VITE_API_URI}/uploads/${product?.filename}`} />
 						</div>
 						<div className={style.productInfo}>
 							<div>

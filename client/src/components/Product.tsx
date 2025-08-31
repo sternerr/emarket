@@ -26,7 +26,7 @@ export default function ProductCard({ product }: { product: Product }) {
 		<div className={style.product}>
 			<Link to={"/products/" + product.id}>
 				<div className={style.productImg}>
-					<img src={`http://${import.meta.env.VITE_API_URI}/uploads/${product.filename}`} />
+					<img src={`${import.meta.env.VITE_API_URI}/uploads/${product.filename}`} />
 				</div>
 			</Link>
 			<div className={style.productInfo}>

@@ -39,11 +39,11 @@ export default function CartPage() {
 									<div key={item.id} className={style.tableRow}>
 										<div className={style.tableCol}>
 											<span>{item.title}</span>
-											<button
-												variant="secondary"
-												design="outlined"
+											<Button
+												variant="primary"
+												design="text"
 												onClick={() => removeFromCart(item.id)}
-											>remove</button>
+											>remove</Button>
 										</div>
 										<div className={style.tableCol}>
 											<span>{item.price}</span>

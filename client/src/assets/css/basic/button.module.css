@@ -12,6 +12,13 @@
 	border-radius: 5px;
 }
 
+.primary.text {
+	background: none;
+	padding-inline: 0;
+
+	color: hsla(var(--primary));
+}
+
 .secondary.outlined {
 	background: none;
 	border: 1px solid hsla(var(--surface-on));

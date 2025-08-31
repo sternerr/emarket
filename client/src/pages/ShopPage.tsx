@@ -13,8 +13,7 @@ export default function ShopPage() {
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {
-				const response = await fetch(`http://${import.meta.env.VITE_API_URI}/api/v1/products`);
-				console.log("a");
+				const response = await fetch(`${import.meta.env.VITE_API_URI}/api/v1/products`);
 				if (!response.ok) {
 					throw new Error(`Failed to fetch products: ${response.statusText}`);
 				}
