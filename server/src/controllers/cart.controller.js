@@ -4,9 +4,7 @@ import { CartItemsGateway } from "../db/gateways/cartItems.gateway.js";
 export default class CartController {
 	static async getUserCart(req, res, next) {
 		try {
-			const { id } = req.params;
-
-			const cart = await CartGateway.findByUserId(id);
+			const cart = await CartGateway.findByUserId(req.user.id);
 			const items = await CartItemsGateway.getItemsByCartId(cart.id);
 
 			res.status(200).json({

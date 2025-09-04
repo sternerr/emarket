@@ -1,4 +1,5 @@
 import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
+import { useAuth } from "./auth.context";
 
 export type Product = {
 	id: string;
@@ -19,37 +20,72 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-	const [cart, setCart] = useState<Product[]>(
-		localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")!)
-			: []
-	)
+	const { user } = useAuth();
+	const [cart, setCart] = useState<Product[]>([])
 
 	useEffect(() => {
-		localStorage.setItem('cart', JSON.stringify(cart));
-	}, [cart]);
+		if (!user) {
+			return;
+		}
 
-	const addToCart = (product: Product) => {
-		setCart((prev) => {
-			const productInCart = prev.find((p => p.id === product.id));
-			if (productInCart) {
-				return prev.map(p => p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p);
-			}
+		async function loadCart() {
+			const data = await fetch(`${import.meta.env.VITE_API_URI}/api/v1/cart/`, {
+				headers: {
+					"Authorization": `Bearer ${user.token}`
+				}
+			}).then(r => r.json());
 
-			return [...prev, { ...product, quantity: 1 }];
-		})
+			setCart(data.data.cart);
+		}
+
+		loadCart();
+	}, [user]);
+
+	const addToCart = async (product: Product) => {
+		if (!user) {
+			return;
+		}
+
+		await fetch(`${import.meta.env.VITE_API_URI}/api/v1/cart/`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${user.token}`
+			},
+			body: JSON.stringify({ productId: product.id }),
+		});
+
+		await getCart()
 	}
 
-	const removeFromCart = (id: string) => {
-		setCart((prev) => {
-			const productInCart = prev.find((p => p.id === id));
-			if (productInCart && productInCart.quantity === 1) {
-				return prev.filter(p => p.id !== id);
-			}
+	const removeFromCart = async (productId: string) => {
+		if (!user) {
+			return;
+		}
 
-			return prev.map((p) =>
-				p.id === id ? { ...p, quantity: p.quantity - 1 } : p
-			);
-		})
+		await fetch(`${import.meta.env.VITE_API_URI}/api/v1/cart/${productId}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${user.token}`
+			},
+		});
+
+		await getCart()
+	}
+
+	const getCart = async () => {
+		if (!user) {
+			return;
+		}
+
+		const data = await fetch(`${import.meta.env.VITE_API_URI}/api/v1/cart/`, {
+			headers: {
+				"Authorization": `Bearer ${user.token}`
+			}
+		}).then(r => r.json());
+
+		setCart(data.data.cart);
 	}
 
 	const getCartTotal = () => {
