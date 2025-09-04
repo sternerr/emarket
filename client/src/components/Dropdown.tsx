@@ -4,6 +4,8 @@ import style from "../assets/css/dropdown.module.css";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../context/auth.context";
 
+import Button from "./basic/Button";
+
 export default function Dropdown() {
 	const { user, logout } = useAuth();
 	const [open, setOpen] = useState<boolean>(false);
@@ -17,7 +19,7 @@ export default function Dropdown() {
 	return <>
 		<div className={style.dropdownTrigger}>
 			{user ? (<span onClick={() => setOpen(!open)}>Profile</span>) :
-				(<Link to="/sign-in"><span onClick={() => setOpen(!open)}>Login</span></Link>)
+				(<Link to="/sign-in"><Button onClick={() => setOpen(!open)}>Login</Button></Link>)
 			}
 
 		</div>

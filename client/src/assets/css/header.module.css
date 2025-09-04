@@ -24,6 +24,9 @@
 }
 
 @media screen and (max-width: 735px) {
+	.header {
+		border-bottom: none;
+	}
 	.nav {
 		justify-content: end;
 	}
