@@ -19,7 +19,9 @@ export default function Dropdown() {
 	return <>
 		<div className={style.dropdownTrigger}>
 			{user ? (<span onClick={() => setOpen(!open)}>Profile</span>) :
-				(<Link to="/sign-in"><Button onClick={() => setOpen(!open)}>Login</Button></Link>)
+				(
+					<Link to="/sign-in"><Button onClick={() => setOpen(!open)}>Login</Button></Link>
+				)
 			}
 
 		</div>

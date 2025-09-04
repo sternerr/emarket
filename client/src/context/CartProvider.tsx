@@ -25,24 +25,33 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
 	useEffect(() => {
 		if (!user) {
+			const localCart = localStorage.getItem("cart");
+			setCart(localCart ? JSON.parse(localCart) : []);
 			return;
 		}
 
-		async function loadCart() {
-			const data = await fetch(`${import.meta.env.VITE_API_URI}/api/v1/cart/`, {
-				headers: {
-					"Authorization": `Bearer ${user.token}`
-				}
-			}).then(r => r.json());
-
-			setCart(data.data.cart);
-		}
-
-		loadCart();
+		getCart();
 	}, [user]);
+
+	useEffect(() => {
+		if (!user) {
+			localStorage.setItem("cart", JSON.stringify(cart));
+		}
+	}, [cart, user]);
 
 	const addToCart = async (product: Product) => {
 		if (!user) {
+			setCart((prev: Product[]) => {
+				const existing = prev.find(p => p.id === product.id);
+				if (existing) {
+					return prev.map(p =>
+						p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+					);
+				}
+
+				return [...prev, { ...product, quantity: 1 }];
+			});
+
 			return;
 		}
 
@@ -60,6 +69,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
 	const removeFromCart = async (productId: string) => {
 		if (!user) {
+			setCart((prev: Product[]) => {
+				const existing = prev.find(p => p.id === productId);
+				if (existing && existing.quantity === 1) {
+					return prev.filter(p => p.id !== productId);
+				}
+
+				return prev.map(p =>
+					p.id === productId ? { ...p, quantity: p.quantity - 1 } : p
+				);
+			});
 			return;
 		}
 

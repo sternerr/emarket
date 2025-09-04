@@ -13,7 +13,11 @@ export default function Header() {
 					{/* <li><Link to="/about">About</Link></li> */}
 					{/* <li><Link to="/contact">Contact</Link></li> */}
 				</ul>
-				<Dropdown />
+
+				<ul className={style.menu}>
+					<li><Link to="/cart">Cart</Link></li>
+					<Dropdown />
+				</ul>
 			</nav>
 		</header >
 	);

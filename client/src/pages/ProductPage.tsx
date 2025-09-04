@@ -7,8 +7,6 @@ import style from "../assets/css/productPage.module.css";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useToast } from "../context/ToastProvider";
-import { useAuth } from "../context/auth.context";
 import Footer from "../components/Footer";
 
 export default function ProductPage() {
@@ -16,9 +14,7 @@ export default function ProductPage() {
 	const [product, setProduct] = useState<Product | undefined>(undefined);
 	const [loading, setLoading] = useState(true);
 
-	const { user } = useAuth();
 	const { addToCart } = useCart();
-	const { showToast } = useToast();
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -42,11 +38,6 @@ export default function ProductPage() {
 	}, [])
 
 	const handleBuy = () => {
-		if (!user) {
-			showToast("You have to be logged in", "info");
-			return
-		}
-
 		if (product) {
 			addToCart(product);
 			navigate("/cart");
@@ -54,11 +45,6 @@ export default function ProductPage() {
 	}
 
 	const handleAddToCart = () => {
-		if (!user) {
-			showToast("You have to be logged in", "info");
-			return
-		}
-
 		if (product) {
 			addToCart(product);
 		}
@@ -80,6 +66,7 @@ export default function ProductPage() {
 							</div>
 							<div>
 								<span><strong>${product?.price}</strong></span>
+
 							</div>
 							<div>
 								<Button

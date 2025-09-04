@@ -13,6 +13,7 @@
 .menu {
 	list-style: none;
 	display: flex;
+	align-items: center;
 	gap: 8px;
 	font-size: var(--fs-50);
 }

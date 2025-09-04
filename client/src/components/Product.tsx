@@ -13,11 +13,6 @@ export default function ProductCard({ product }: { product: Product }) {
 	const navigate = useNavigate()
 
 	const handleBuy = () => {
-		if (!user) {
-			showToast("You have to be logged in", "info");
-			return
-		}
-
 		addToCart(product);
 		navigate("/cart");
 	}
