@@ -20,10 +20,10 @@
 }
 
 .footer ul li {
-	padding: 4px;
+	padding-block: 4px;
 }
 .footer ul li a {
-	padding: 8px;
+	padding-block: 8px;
 }
 
 @media screen and (max-width: 800px) {
