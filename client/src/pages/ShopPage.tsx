@@ -35,7 +35,7 @@ export default function ShopPage() {
 		<main>
 			<section className="block">
 				<div className="section__title">
-					<h3>All Products</h3>
+					<h1>All Products</h1>
 				</div>
 				{loading ? (
 					<div>loading...</div>

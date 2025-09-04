@@ -65,6 +65,7 @@ export default function LoginPage() {
 	return (
 		<main className="fullscreen center">
 			<Form onSubmit={handleSubmit}>
+				<h1>Sign in</h1>
 				<Input type="email" placeholder="Email" name="email" />
 				<Input type="password" placeholder="Password" name="password" />
 				<Button type="submit">Sign in</Button>

@@ -69,6 +69,7 @@ export default function SignUpPage() {
 	return (
 		<main className="fullscreen center">
 			<Form onSubmit={handleSubmit}>
+				<h1>Sign up</h1>
 				<Input type="email" placeholder="Email" name="email" />
 				<Input type="password" placeholder="Password" name="password" />
 				<Input type="password" placeholder="Reenter password" name="repassword" />
