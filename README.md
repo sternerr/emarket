@@ -16,6 +16,9 @@ E-Market is a full-stack e-commerce web application. It features user authentica
 ## Backend
 The backend is a RESTful API built with Node.js and Express.js, using PostgreSQL for data persistence. It handles user authentication and product data.
 
+### Entity Relationship Diagram
+![db-diagram](doc/db-diagram.png)
+ 
 ### REST API
 **Auth**
 | Method | Endpoint        | Description                | 
@@ -30,6 +33,13 @@ The backend is a RESTful API built with Node.js and Express.js, using PostgreSQL
 | GET   | `/api/v1/products/`  | Retrieves all products |
 | GET   | `/api/v1/products/:id`  | Retrieves a product based on its id |
 
+**Products**
+| Method | Endpoint        | Description                | 
+|--------|-----------------|----------------------------|
+| POST   | `/api/v1/cart/`  | Add a product to the cart |
+| GET   | `/api/v1/cart/`  | Retrieves the cart |
+| DELETE   | `/api/v1/cart/:id`  | Remove a product from the cart |
+
 ## Frontend
 The frontend is a single-page application (SPA) built with Vite and React
 
@@ -38,3 +48,4 @@ The frontend is a single-page application (SPA) built with Vite and React
 - State Management: React Context and localstorage for managing cart and authentication status.
 - API Integration: Fetch API for HTTP requests to the backend API.
 - Routing: React Router for navigation between pages.
+
