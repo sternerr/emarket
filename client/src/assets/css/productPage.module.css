@@ -58,6 +58,16 @@
 	}
 
 	.productImg {
+		flex: 0 1;
 		max-width: 100%;
+	}
+
+	.productInfo {
+		flex: 0 1;
+	}
+
+	.productInfo div:nth-of-type(3){
+		flex: 0 1;
+		flex-direction: column;
 	}
 }
