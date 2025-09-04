@@ -2,6 +2,15 @@ import { pool } from "../pool.js";
 import { v4 as uuidv4 } from "uuid";
 
 export class UserGateway {
+	static async findByID(id) {
+		try {
+			const res = await pool.query("SELECT id, email FROM users WHERE id=$1", [id]);
+			return res.rows[0];
+		} catch (error) {
+			throw error;
+		}
+	}
+
 	static async findByEmail(email) {
 		try {
 			const res = await pool.query("SELECT id, email, password from users WHERE email=$1", [email]);
