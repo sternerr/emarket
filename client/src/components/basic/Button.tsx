@@ -3,7 +3,7 @@ import { type ButtonHTMLAttributes, type ReactNode } from "react"
 type ButtonProps = {
 	children: ReactNode,
 	variant?: "primary" | "secondary",
-	design?: "filled" | "outlined"
+	design?: "filled" | "outlined" | "text"
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 import style from "../../assets/css/basic/button.module.css";

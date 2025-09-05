@@ -2,13 +2,9 @@ import style from "../assets/css/product.module.css";
 import { Link, useNavigate } from "react-router";
 
 import { useCart, type Product } from "../context/CartProvider";
-import { useAuth } from "../context/auth.context";
-import { useToast } from "../context/ToastProvider";
 import Button from "./basic/Button";
 
 export default function ProductCard({ product }: { product: Product }) {
-	const { user } = useAuth();
-	const { showToast } = useToast();
 	const { addToCart } = useCart();
 	const navigate = useNavigate()
 
