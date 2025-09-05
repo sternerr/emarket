@@ -33,7 +33,7 @@ The backend is a RESTful API built with Node.js and Express.js, using PostgreSQL
 | GET   | `/api/v1/products/`  | Retrieves all products |
 | GET   | `/api/v1/products/:id`  | Retrieves a product based on its id |
 
-**Products**
+**Carts**
 | Method | Endpoint        | Description                | 
 |--------|-----------------|----------------------------|
 | POST   | `/api/v1/cart/`  | Add a product to the cart |
@@ -48,4 +48,5 @@ The frontend is a single-page application (SPA) built with Vite and React
 - State Management: React Context and localstorage for managing cart and authentication status.
 - API Integration: Fetch API for HTTP requests to the backend API.
 - Routing: React Router for navigation between pages.
+
 
